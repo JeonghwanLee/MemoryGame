@@ -33,15 +33,8 @@ document.getElementsByClassName('deck')[0].addEventListener("click", function(ev
 		if (timer === 0){
 			timeCounting = setInterval( function() {
 			timer = timer + 1;
+			document.getElementById('timer').textContent = timer;
 			} , 1000);
-		}
-		// Increase moveCounter every click occurs
-		moveCounter += 1;
-		// Change # of Moves as moveCounter increases
-		document.getElementsByClassName('moves')[0].textContent = moveCounter;
-		// Reduce a star every 20 times of click trial
-		if (moveCounter % 20 === 0) {
-			reduceStar();
 		}
 		// Check whether moveCounter exceeds 60 times or not	
 		if (moveCounter <= 60) {
@@ -106,6 +99,14 @@ function displaySymbol(card) {
 		}
 	}
 	card.classList.add('open', 'show');
+	// Increase moveCounter every click on different cards occursur
+	moveCounter += 1;
+	// Change # of Moves as moveCounter increases
+	document.getElementsByClassName('moves')[0].textContent = moveCounter;
+	// Reduce a star every 20 times of click trial
+	if (moveCounter % 20 === 0) {
+		reduceStar();
+	}
 }
 
 // Function to add the clicked card to the opened card list
@@ -175,6 +176,8 @@ function openModal() {
 	var span = document.getElementsByClassName("close")[0];
 	// Get the <p> element to insert the modal content
 	var modalContent = document.getElementsByClassName('modal-content')[0].children[1];
+	// Get the <button> elment to restart
+	var restartButton = document.getElementById('restartButton');
 	// When all cards are matched, open the modal 
 	modal.style.display = "block";	
 	// When the user clicks on <span> (x), close the modal
@@ -189,11 +192,16 @@ function openModal() {
 	}
 	// Comments of the modal when users have no MOVES
 	if (moveCounter > 60) {
-		modalContent.textContent = "Try Again! Click the reset!";
+		modalContent.textContent = "Try Again! Click Restart!";
 	}
 	// Comments of the modal when users WIN
 	else {
-		modalContent.textContent = `Congrat! Your score is ${score} out of 3 stars with ${timer} seconds. If you want to play it again, Click the reset!`;
+		modalContent.textContent = `Congrats! Your score is ${score} out of 3 stars with ${timer} seconds. If you want to play it again, Click Restart!`;
+	}
+	// Restart the game when the restart button is clicked
+	restartButton.onclick = function() {
+		reset();
+		modal.style.display = "none";
 	}
 }
 
