@@ -9,7 +9,7 @@ This memory game presents the opportunity to fully combine skills in **HTML, CSS
 
 ## Instructions
 
-- Download or clone this project at https://github.com/JeonghwanLee/MemoryGame
+- Download or clone this project at https://github.com/JeonghwanLee/Udacity_MemoryGame
 
 - Open index.html file on your browser. Each of browsers (Chrome, Firefox, Safari, and Explorer) are good.
 
